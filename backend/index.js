@@ -1,9 +1,8 @@
 
-
 import express from 'express';
-import dotenv from 'dotenv';
 import cors from 'cors';
-import bodyParser from 'body-parser';
+import dotenv from 'dotenv';
+import connectDB from './config/connectDB.js';
 
 dotenv.config();
 
@@ -11,9 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(cors());
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true })); 
+app.use(express.json()); // Built-in Express middleware instead of body-parser
 
 
 
@@ -25,4 +22,11 @@ app.get('/', (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
+    connectDB;
 });
+
+
+
+
+
+
